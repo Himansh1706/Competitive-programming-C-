@@ -10,9 +10,9 @@ int main()
     {
         ll n;
         cin>>n;
-        ll subsets=(1<<8)-1;
+        ll subsets = (1<<8)-1;
         ll ans=0;
-        for(ll i=0;i<=subsets;i++)
+        for(ll i=1;i<=subsets;i++)
         {
             ll deno = 1ll;
             ll setbits = __builtin_popcount(i);
