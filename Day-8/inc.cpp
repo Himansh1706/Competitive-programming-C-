@@ -1,3 +1,6 @@
+/*
+FIND OUT THE NO. OF NO.S BETWEEN 1 AND N WHICH ARE DIVISIBLEBY ANY OF PRIME NO.S LESS THAN 20 
+*/
 #include<iostream>
 using namespace std;
 #define ll long long
