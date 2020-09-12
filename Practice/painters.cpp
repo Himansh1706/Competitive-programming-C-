@@ -1,17 +1,22 @@
 #include<iostream>
+#include <bits/stdc++.h> 
+
 using namespace std;
 #define ll long long int
 int main() {
-	ll n,k,t,ans=0;
+	ll n,k,t;
 	cin>>n>>k>>t;
-	ll arr[n],sum=0;
+	ll arr[1000000],sum=0;
+    ll beg=0;
 	for(ll i=0;i<n;i++)
 	{
 		cin>>arr[i];
 		sum+=arr[i];
+        beg=max(beg,arr[i]);
 	}
-	ll beg=0;
-	ll end=sum*t;
+	//ll beg=*max_element(arr,arr+n);////*t;
+	ll end=sum;//*t,
+    ll ans=0;///k;
 	
 	while(beg<=end)
 	{
@@ -25,11 +30,11 @@ int main() {
 		while(1)
 		
 		{
-			if(t1+(arr[i]*t)>mid)
+			if(t1+(arr[i])>mid)
 			{
 				break;
 			}
-			t1=t1+(arr[i]*t);
+			t1=t1+(arr[i]);//*t);
 			i++;
 			if(i==n)
 			{
@@ -54,6 +59,6 @@ int main() {
 		
 	} 
 
-	cout<<ans;
+	cout<<(ans*t)%10000003<<endl;
 	return 0;
 }
