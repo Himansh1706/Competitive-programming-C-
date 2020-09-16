@@ -1,26 +1,27 @@
 #include<iostream>
+#include<cstring>
 using namespace std;
-#include<vector>
+class Car{
+    public:
+    int model_no;
+    char name[10];
+    float price;
+    public:
+    Car(int a,char *n,float p)
+    {
+        model_no=a;
+        strcpy(name,n);
+        price=p;
+    }
+    void print()
+    {
+        cout<<name<<"        Model_no      "<<model_no<<"       price       "<<price<<endl; 
+    }
+
+};
 int main()
 {
-    vector<int> nums{2,7,11,15};
-    int target=9;
-      vector<int> v;
-        for(int it=0;it<nums.size();it++)
-        {
-            for(int ut=it+1;ut<nums.size();ut++)
-            {
-                if((nums[it]+nums[ut])==target)
-                {
-                     v.push_back(it);
-                     v.push_back(ut);
-                    break;
-                }
-            }
-        }
-        for(int ut=0;ut<v.size();ut++)
-            {
-                cout<<v[ut];
-            }
-            return 0;
+    Car c(89,"Audi",900);
+    c.print();
+    return 0;
 }
