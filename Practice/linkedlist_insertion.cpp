@@ -51,15 +51,52 @@ void print(node* head)
     }
     cout<<endl;
 }
+int length(node * head)
+{
+    int cnt=0;
+    while(head!=NULL)
+    {
+        cnt++;
+        head=head->next;
+    }
+    return cnt;
+}
+void insertAtmiddle(node* &head,int d,int p)   // after p nodes
+{
+    if(p==0 || head==NULL)
+    {
+        insertAtHead(head,d);
+        return;
+    }
+    else if(p>length(head))
+    {
+        insertAtEnd(head,d);
+    }
+    else
+    {
+        node* temp=head;
+        while(p>1)
+        {
+            temp=temp->next;
+            p--;
+        }  
+        node *n=new node(d);
+        n->next=temp->next;
+        temp->next=n;
+        return;
+    }
+    
+}
 int main()
 {
     node* head=NULL;
+    insertAtEnd(head,100);
     insertAtHead(head,90);
-   
-    insertAtHead(head,98);
-     insertAtEnd(head,100);
-      insertAtEnd(head,104);
-       insertAtHead(head,108);
+insertAtHead(head,98);
+    insertAtEnd(head,100);
+    insertAtmiddle(head,1000,2);
+    insertAtEnd(head,104);
+    
     print(head);
 
 }
