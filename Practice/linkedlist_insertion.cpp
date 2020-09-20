@@ -6,8 +6,8 @@ class node{
     node* next;
     node(int d)
     {
-data=d;
-next=NULL;
+        data=d;
+        next=NULL;
     }
 };
 void insertAtHead(node* &head,int d)
@@ -103,27 +103,53 @@ void reverse(node* &head)
 }
 node* recReverse(node* head)
 {
-if(head->next==NULL or head==NULL)
-{
-    return head;
+    if(head->next==NULL or head==NULL)
+    {
+        return head;
+    }
+    node* shead=recReverse(head->next);
+    node* temp=shead;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=head;
+    head->next=NULL;
+    return shead;
 }
-node* shead=recReverse(head->next);
-node* temp=shead;
-while(temp->next!=NULL)
+int kthelementfromend(node *head,int k)
 {
-    temp=temp->next;
+    int n=length(head);
+    int a=n-k;
+    while(a>0)
+    {
+        head=head->next;
+        a--;
+    }
+    return head->data;
 }
-temp->next=head;
-head->next=NULL;
-return shead;
-
+int kthelementfromendoptimized(node *head,int k)
+{
+    node* f=head;
+    while(k>0)
+    {
+        f=f->next;
+        k--;
+    }
+    node* s=head;
+    while(f!=NULL)
+    {
+f=f->next;
+s=s->next;
+    }
+    return s->data;
 }
 int main()
 {
     node* head=NULL;
     insertAtEnd(head,100);
     insertAtHead(head,90);
-insertAtHead(head,98);
+    insertAtHead(head,98);
     insertAtEnd(head,100);
     insertAtmiddle(head,1000,2);
     insertAtEnd(head,104);
@@ -131,7 +157,8 @@ insertAtHead(head,98);
     reverse(head);
     print(head);
     head=recReverse(head);
-    
     print(head);
-
+    cout<<kthelementfromend(head,4)<<endl;
+    cout<<kthelementfromendoptimized(head,4)<<endl;
+    return 0;
 }
