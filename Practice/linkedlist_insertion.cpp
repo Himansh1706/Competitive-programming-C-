@@ -87,6 +87,37 @@ void insertAtmiddle(node* &head,int d,int p)   // after p nodes
     }
     
 }
+void reverse(node* &head)
+{
+    node* c=head;
+    node* p=NULL;
+    node* n=NULL;
+    while(c!=NULL)
+    {
+        n=c->next;
+        c->next=p;
+        p=c;
+        c=n;
+    }
+    head=p;
+}
+node* recReverse(node* head)
+{
+if(head->next==NULL or head==NULL)
+{
+    return head;
+}
+node* shead=recReverse(head->next);
+node* temp=shead;
+while(temp->next!=NULL)
+{
+    temp=temp->next;
+}
+temp->next=head;
+head->next=NULL;
+return shead;
+
+}
 int main()
 {
     node* head=NULL;
@@ -96,6 +127,10 @@ insertAtHead(head,98);
     insertAtEnd(head,100);
     insertAtmiddle(head,1000,2);
     insertAtEnd(head,104);
+    print(head);
+    reverse(head);
+    print(head);
+    head=recReverse(head);
     
     print(head);
 
