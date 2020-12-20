@@ -1,11 +1,9 @@
-#include<iostream>
-#include<list>
-#include<map>
+#include<bits/stdc++.h>
 using namespace std;
 class graph
 {
-    int v;
-    list<int> *l;
+    int v;          //vertices
+    list<int> *l;   //representation
 public:
     graph(int n)
     {
@@ -30,6 +28,7 @@ public:
         }
     }
 };
+
 class graphusingmap
 {
     map<int,list<int>> m;
@@ -40,10 +39,10 @@ public:
     }
     void addedge(int a,int b,bool bdir)
     {
-        map[a].push_back(b);
+        m[a].push_back(b);
         if(bdir)
         {
-            map[b].push_back(a);
+            m[b].push_back(a);
 
         }
     }
@@ -51,8 +50,8 @@ public:
     {
         for(auto node:m)
         {
-            cout<<m.first<<"-->";
-            for(auto l:m.second)
+            cout<<node.first<<"-->";
+            for(auto l:node.second)
             {
                 cout<<l<<"    ";
             }
@@ -73,13 +72,13 @@ public:
             l[y].push_back(make_pair(x,wt));
         }
     }
-    void print adj()
+    void printadj()
     {
         for(auto p:l)
         {
             string node=p.first;
             cout<<node<<"-->";
-            for(auto nbr:node.second)
+            for(auto nbr:p.second)
             {
                 cout<<nbr.first<<"-"<<nbr.second<<"       ";
             }
@@ -87,6 +86,7 @@ public:
         }
     }
 };
+
 int main()
 {
     graph g(7);
@@ -94,7 +94,7 @@ int main()
     g.addedge(2,3);
     g.addedge(3,4);
     g.addedge(5,6);
-    g.addedge(4,5);
+    g.addedge(4,1);
     g.printaddlist();
 return 0;
 
